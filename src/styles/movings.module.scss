@@ -1,0 +1,38 @@
+@import "./cards.scss";
+
+.container {
+	.box {
+		background-color: white;
+		padding: 16px;
+
+		&.creating {
+			text-align: center;
+		}
+	}	
+
+	h2 {
+		margin-bottom: 20px;
+	}
+}
+
+.moving-box {
+	@extend .card;
+
+	padding: 24px;
+	cursor: pointer;
+
+	.title {
+		.date {
+			font-size: 18px;
+			font-weight: 500;
+		}
+	}
+}
+
+.movings-actions {
+	text-align: right;
+}
+
+.movings-row {
+	padding-top: 24px;
+}

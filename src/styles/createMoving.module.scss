@@ -1,0 +1,19 @@
+.container {
+	.box {
+		background-color: white;
+		padding: 16px;
+
+		&.creating {
+			text-align: center;
+		}
+	}	
+
+	h2 {
+		margin-bottom: 20px;
+	}
+
+	.actions {
+		padding-top: 20px;
+		float: right;
+	}
+}

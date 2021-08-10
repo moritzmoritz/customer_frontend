@@ -1,0 +1,14 @@
+@import "./cards.scss";
+
+.container {
+	text-align: center;
+}
+
+.create-box {
+	@extend .card, .card-2;
+
+	padding: 24px;
+	margin: 24px auto;
+	
+	display: inline-block;
+}
