@@ -39,6 +39,7 @@ const MovingsList = movings => {
 					let boxes = chunk.map(moving => {
 						let movingOutDate = moment(moving.moving_out_date);
 						let movingInDate = moment(moving.moving_in_date);
+						let link = "/movings/" + moving.id;
 						let description = moving.description.replace(/(\r\n|\n|\r)/gm, " ");
 						
 						if (description.length > 90) {
@@ -47,13 +48,15 @@ const MovingsList = movings => {
 
 						return (
 							<Col md={ 4 } key={ moving.id }>
-								<div className={ styles["moving-box"] }>
-									<div className={ styles["title"] }>
-										<span className={ styles["date"] }>{ movingOutDate.format("DD.MM.YYYY") }</span> - <span className={ styles["date"] }>{ movingInDate.format("DD.MM.YYYY") }</span>
-									</div>
+								<Link className={ styles["moving-link"] } to={ link } >
+									<div className={ styles["moving-box"] }>
+										<div className={ styles["title"] }>
+											<span className={ styles["date"] }>{ movingOutDate.format("DD.MM.YYYY") }</span> - <span className={ styles["date"] }>{ movingInDate.format("DD.MM.YYYY") }</span>
+										</div>
 
-									{ description }
-								</div>
+										{ description }
+									</div>
+								</Link>
 							</Col>
 							)
 					})
@@ -69,14 +72,12 @@ const MovingsList = movings => {
 }
 
 const Movings = () => {
-	// Show create moving comoponent
-
 	const opts = { method: 'GET' };
 
 	const { loading, error, refresh, data: movings, status } = useApi(
-	    movingsEndpoint,
+		movingsEndpoint,
 	    opts
-	    );
+    );
 
 	if (loading) {
 		return (
@@ -93,7 +94,11 @@ const Movings = () => {
 					</div>
 				</Container>
 			</div>
-			)
+		)
+	}
+
+	if (error || status !== 200) {
+		return "";
 	}
 
 	if (movings.length > 0) {

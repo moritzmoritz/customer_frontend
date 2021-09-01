@@ -1,0 +1,21 @@
+.title {
+	.date {
+		font-size: 18px;
+		font-weight: 500;
+	}
+}
+
+.description {
+	padding-top: 24px;
+	white-space: pre-line;
+}
+
+.actions {
+	float: right;
+	padding-bottom: 20px;
+	margin-right: -10px;
+
+	button {
+		margin-right: 10px;
+	}
+}

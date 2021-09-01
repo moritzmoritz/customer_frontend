@@ -17,7 +17,7 @@ export const useApi = (url, options = {}) => {
       	const { ...fetchOptions } = options;
 
         const accessToken = await getAccessTokenSilently({ audience: "https://staging.flytternu.io" });
-        
+
         const res = await fetch(url, {
           ...fetchOptions,
           headers: {
@@ -61,6 +61,25 @@ export const post = async (url, body, accessToken) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
         body: JSON.stringify(body)
+    };
+
+    return await fetch(url, requestOptions);
+}
+
+export const patch = async (url, body, accessToken) => {
+  const requestOptions = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
+        body: JSON.stringify(body)
+    };
+
+    return await fetch(url, requestOptions);
+}
+
+export const deleteRequest = async (url, accessToken) => {
+  const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` }
     };
 
     return await fetch(url, requestOptions);

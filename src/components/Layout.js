@@ -13,6 +13,7 @@ import CreateUser from "./CreateUser";
 import Menu from "./Menu";
 import Home from "./Home";
 import Movings from "./Movings";
+import Moving from "./Moving";
 import Messages from "./Messages";
 import CreateMoving from "./CreateMoving";
 
@@ -42,6 +43,10 @@ const AUTHENTICATED_ROUTES = [
 	{
 		path: "/movings/create",
 		component: CreateMoving	
+	},
+	{
+		path: "/movings/:id",
+		component: Moving	
 	},
 	{
 		path: "/",
